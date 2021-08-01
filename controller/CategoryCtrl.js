@@ -20,7 +20,8 @@ exports.createCategory =async (req, res) => {
 
 exports.getCategories = async (req, res) => {
     try {
-        Category.find()
+        const id = req.params.id;
+        Category.find({category_id : id })
             .exec((err, categories) => {
                 if (err || !categories) {
                     return res.status(404).json({ msg: "No categories found" }); 

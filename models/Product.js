@@ -29,6 +29,10 @@ const productSchema = new Schema({
         type: Number,
         trim: true,
         default: 0
+    },
+    product_id: {
+        type: String,
+        require: true
     }
 });
 

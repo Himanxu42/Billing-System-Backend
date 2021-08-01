@@ -6,6 +6,10 @@ const categorySchema = new Schema({
         type: String,
         require: true,
         trim : true 
+    },
+    category_id: {
+        type: String,
+        require:true
     }
    
 });

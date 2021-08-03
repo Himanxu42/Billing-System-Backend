@@ -3,7 +3,7 @@ exports.createProduct = async (req, res) => {
    
     try {
        
-        const foundProduct = await Product.findOne({ product_name: req.body.product_name });
+        const foundProduct = await Product.findOne({ product_name: req.body.product_name, product_id:req.body.product_id});
         if (foundProduct) {
             return res.status(400).json({ msg: "Product already exist try adding it with a different name" });
         }

@@ -1,7 +1,7 @@
 const Category = require('../models/Category'); 
 exports.createCategory =async (req, res) => {
     try {
-        const foundCategory = await Category.findOne({ category_name: req.body.category_name });
+        const foundCategory = await Category.findOne({ category_name: req.body.category_name,category_id:req.body.category_id });
         if (foundCategory) {
             return res.status(400).json({ msg: "Category already exist try adding it with a different name" });
         }

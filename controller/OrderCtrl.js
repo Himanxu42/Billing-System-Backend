@@ -1,7 +1,18 @@
 const Order = require('../models/Order');
+const Product = require('../models/Product') ; 
 exports.createOrder = (req, res) => {
   
-    const id = req.params.id;
+    const id = req.params.id;  
+    //create different write operation for 
+    const productUpdateOperation =  req.body.products.map(product =>{
+        return { 
+        updateOne : {
+            filter : {_id:product.item._id},
+            update : {stock : Math.round(product.item.stock - product.select) }
+        }
+    }}) 
+
+    Product.bulkWrite(productUpdateOperation)
     const toSave = {
         order_user_id: id,
         orders: req.body.products,
